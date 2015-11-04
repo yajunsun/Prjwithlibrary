@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item
+            android:id="@+id/d_friend"
+            android:icon="@drawable/abc_ic_menu_share_mtrl_alpha"
+            android:title="Friends"/>
+        <item
+            android:id="@+id/d_disccussion"
+            android:icon="@android:drawable/ic_btn_speak_now"
+            android:title="Disccusion"/>
+        <item
+            android:id="@+id/d_message"
+            android:icon="@android:drawable/ic_dialog_email"
+            android:title="Message"/>
+    </group>
+</menu>
