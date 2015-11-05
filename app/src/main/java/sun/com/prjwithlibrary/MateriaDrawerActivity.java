@@ -2,6 +2,7 @@ package sun.com.prjwithlibrary;
 
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.mikepenz.aboutlibraries.util.UIUtils;
@@ -52,10 +54,15 @@ public class MateriaDrawerActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         imageView = (IconicsImageView) findViewById(R.id.iv_main);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(false);
         final IProfile profile = new ProfileDrawerItem().withName("Yajun Sun").withIcon(getResources().getDrawable(R.drawable.yajunsun))
                 .withEmail("407250568@qq.com");
-        accountHeader = new AccountHeaderBuilder().withActivity(this).withTranslucentStatusBar(false).
-                withHeaderBackground(getResources().getDrawable(R.drawable.header))
+        accountHeader = new AccountHeaderBuilder().withActivity(this).withTranslucentStatusBar(false)
+                //.withHeaderBackground(getResources().getDrawable(R.drawable.header))
+                .withHeaderBackground(new ColorDrawable(Color.parseColor("#FDFDFD")))
+                .withCompactStyle(true).withHeightPx(com.mikepenz.materialize.util.UIUtils.getActionBarHeight(this))
+                .withAccountHeader(R.layout.material_drawer_compact_persistent_header)
                 .addProfiles(profile).withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
                     public boolean onProfileChanged(View view, IProfile profile, boolean current) {
@@ -127,7 +134,17 @@ public class MateriaDrawerActivity extends AppCompatActivity {
                 .withSavedInstance(savedInstanceState)
                 .build();
         miniDrawer.withCrossFader(new CrossfadeWrapper(crossfader));
-        crossfader.getCrossFadeSlidingPaneLayout().setShadowResourceLeft(R.drawable.material_drawer_shadow_left);
+        //crossfader.getCrossFadeSlidingPaneLayout().setShadowResourceLeft(R.drawable.material_drawer_shadow_left);
+        //define and create the arrow ;)
+        ImageView toggle = (ImageView) accountHeader.getView().findViewById(R.id.material_drawer_account_header_toggle);
+        //for RTL you would have to define the other arrow
+        toggle.setImageDrawable(new IconicsDrawable(this, GoogleMaterial.Icon.gmd_keyboard_arrow_left).sizeDp(16).color(Color.BLACK));
+        toggle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                crossfader.crossFade();
+            }
+        });
     }
 
     void setImageviewSource(int color) {
