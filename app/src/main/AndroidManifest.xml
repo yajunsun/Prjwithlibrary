@@ -24,6 +24,9 @@
         </activity>
         <activity android:name=".ItemListActivity" />
         <activity android:name=".ItemDetail" />
+        <activity
+            android:name=".MiniDrawerActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

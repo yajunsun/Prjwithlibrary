@@ -1,34 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
+        tools:ignore="UnusedAttribute"
         android:layout_width="fill_parent"
         android:layout_height="60dp"
         android:background="@color/primary"
         android:elevation="8dp"
-        android:fitsSystemWindows="true" />
+         />
 
     <LinearLayout
+        android:id="@+id/content"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:gravity="center"
         android:orientation="vertical">
-
         <com.mikepenz.iconics.view.IconicsImageView
             android:id="@+id/iv_main"
-            android:layout_width="320dp"
-            android:layout_height="320dp"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
             app:iiv_color="@android:color/holo_red_dark"
             app:iiv_icon="gmd-directions-car" />
-
-        <TextView
-            android:id="@+id/txtcontent"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
     </LinearLayout>
 </LinearLayout>
